@@ -32,9 +32,13 @@ public class MainRunnerClass {
 	public void beforeSuite() throws InterruptedException {
 
 		Properties prop = new Properties();
-		prop.load(new FileInputStream("config.properties"));
-		String browser = prop.getProperty("browser");
-
+		try (FileInputStream fis = new FileInputStream("config.properties")) {
+			prop.load(fis);
+			} catch (Exception e) {
+				throw new RuntimeException("config.properties not found in AutomationClient folder", e);
+			}
+			String browser = prop.getProperty("browser");
+			
 		if(browser.equalsIgnoreCase("chrome")) {
    		 	WebDriverManager.chromedriver().setup();
     		driver = new ChromeDriver();
