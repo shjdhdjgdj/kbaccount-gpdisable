@@ -2,7 +2,6 @@ package com.mainMethod.automation;
 
 import java.time.Duration;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 import java.io.FileInputStream;
 import java.util.Properties;
 
@@ -32,11 +31,8 @@ public class MainRunnerClass {
 	@BeforeSuite
 	public void beforeSuite() throws InterruptedException {
 
-		System.out.println("Enter 1 for Chrome");
-		System.out.println("Enter 2 for Mozilla Firefox");
-
 		Properties prop = new Properties();
-		prop.load(new FileInputStream("src/main/resources/config.properties"));
+		prop.load(new FileInputStream("config.properties"));
 		String browser = prop.getProperty("browser");
 
 		if(browser.equalsIgnoreCase("chrome")) {
@@ -50,6 +46,9 @@ public class MainRunnerClass {
 		else {
     		throw new RuntimeException("Invalid browser in config.properties");
 		}
+
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 		pom = new PageBean(driver);
 		try {
@@ -69,9 +68,7 @@ public class MainRunnerClass {
 			System.out.println("Error");
 			checkElementWithRetries(VARIABLES.NEW_REGISTRATION_URL, "//h4[contains(text(),'SBI GENERAL INSURANCE COMPANY LIMITED')]",
 					5, 5);
-		} finally {
-			sc.close();
-		}
+		} 
 	}
 
 	public void checkElementWithRetries(String url, String xpath, int maxRetries, int maxTabSwitches)
