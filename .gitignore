@@ -1,6 +1,6 @@
-# local configs
-VARIABLES.java
-config.properties
+# local configs (ignore everywhere)
+**/VARIABLES.java
+**/config.properties
 
 # drivers (must be local per machine)
 drivers/
