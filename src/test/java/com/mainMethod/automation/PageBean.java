@@ -315,16 +315,12 @@ public class PageBean {
 		wait.until(ExpectedConditions.elementToBeClickable(nameAsPerEpic));
 		nameAsPerEpic.sendKeys(name);
 		fatherOrHusbandName.sendKeys(fatherHusbandName);
-		Thread.sleep(2500);
 		Select dropdown1 = new Select(relationWithFarmerDropDown);
 		dropdown1.selectByValue(relationWithFarmer);
-		Thread.sleep(2500);
 		Select dropDown2 = new Select(ageDropDown);
 		dropDown2.selectByValue(age);
-		Thread.sleep(2500);
 		Select dropDown3 = new Select(genderDropDown);
 		dropDown3.selectByValue(gender);
-		Thread.sleep(2500);
 		Select dropDown4 = new Select(casteDropDown);
 		dropDown4.selectByValue(caste);
 
@@ -334,7 +330,7 @@ public class PageBean {
 		dropDown5.selectByValue(farmerCategory);
 
 		try {
-		    Thread.sleep(3000);
+		    Thread.sleep(1000);
 		} catch (InterruptedException e) {
 		    e.printStackTrace();
 		}
