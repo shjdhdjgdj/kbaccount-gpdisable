@@ -315,16 +315,16 @@ public class PageBean {
 		wait.until(ExpectedConditions.elementToBeClickable(nameAsPerEpic));
 		nameAsPerEpic.sendKeys(name);
 		fatherOrHusbandName.sendKeys(fatherHusbandName);
-
+		Thread.sleep(2500);
 		Select dropdown1 = new Select(relationWithFarmerDropDown);
 		dropdown1.selectByValue(relationWithFarmer);
-
+		Thread.sleep(2500);
 		Select dropDown2 = new Select(ageDropDown);
 		dropDown2.selectByValue(age);
-
+		Thread.sleep(2500);
 		Select dropDown3 = new Select(genderDropDown);
 		dropDown3.selectByValue(gender);
-
+		Thread.sleep(2500);
 		Select dropDown4 = new Select(casteDropDown);
 		dropDown4.selectByValue(caste);
 
@@ -334,7 +334,7 @@ public class PageBean {
 		dropDown5.selectByValue(farmerCategory);
 
 		try {
-		    Thread.sleep(1000);
+		    Thread.sleep(3000);
 		} catch (InterruptedException e) {
 		    e.printStackTrace();
 		}
@@ -403,21 +403,21 @@ public class PageBean {
 	public void cropDetailsEntry(String district, String block, String crop, String gpInitial, String mouza,
 			String khatianNumber, String plotNumber, String areaInAcre1, String natureOfFarmer, String parchaImg)
 			throws InterruptedException {
-
+		
 		new Select(cropDetailsDistrictDropDown).selectByVisibleText(district);
-
+		Thread.sleep(2000);
 		wait.until(driver1 -> {
 			Select dropDown = new Select(cropDetailsBlockDropDown);
 			return dropDown.getOptions().size() > 1;
 		});
 		new Select(cropDetailsBlockDropDown).selectByVisibleText(block);
-
+		Thread.sleep(2500);
 		wait.until(driver1 -> {
 			Select dropDown = new Select(cropDetailsCropDropDown);
 			return dropDown.getOptions().size() > 1;
 		});
 		new Select(cropDetailsCropDropDown).selectByVisibleText(crop);
-
+		Thread.sleep(2500);
 		if (cropDetailsGramPanchayatInitial.isEnabled()) {
 			wait.until(driver1 -> {
 				Select dropDown = new Select(cropDetailsGramPanchayatInitial);
@@ -439,10 +439,10 @@ public class PageBean {
 			return dropDown.getOptions().size() > 1;
 		});
 		new Select(cropDetailsMouzaDropDown).selectByVisibleText(mouza);
-
+		Thread.sleep(2500);
 		clearAndType(cropDetailskhaitanNumber, khatianNumber);
 		clearAndType(cropDetailsPlotNumber, plotNumber);
-		Thread.sleep(500);
+		Thread.sleep(2000);
 		cropDetailskhaitanNumber.clear();
 		cropDetailsPlotNumber.clear();
 		clearAndType(cropDetailskhaitanNumber, khatianNumber);
@@ -519,12 +519,13 @@ public class PageBean {
 	    // 4. IFSC Code
 	    if (ifsCode.isEnabled() && ifsCode.getAttribute("readonly") == null) {
 	        ifsCode.clear();
+			Thread.sleep(2000);
 	        ifsCode.sendKeys(ifscCode);
 
 	        // Click bank name only if interactive
 	        if (bankName.isEnabled()) {
 	            bankName.click();
-	            Thread.sleep(500);
+	            Thread.sleep(2500);
 	        }
 	    }
 
