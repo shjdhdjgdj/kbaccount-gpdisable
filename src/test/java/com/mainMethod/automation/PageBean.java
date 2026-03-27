@@ -256,7 +256,6 @@ public class PageBean {
 		Select dropdown2 = new Select(sessionDropdown);
 		dropdown2.selectByIndex(index1);
 
-		Thread.sleep(2000);
 		generateOtp.click();
 		Thread.sleep(30000);
 
@@ -389,7 +388,6 @@ public class PageBean {
 			Select dropDown4 = new Select(farmersResidentialAddressvillageDropDown);
 			return dropDown4.getOptions().size() > 1;
 		});
-		Thread.sleep(2000);
 		new Select(farmersResidentialAddressvillageDropDown).selectByIndex(1);
 
 		pinCode.sendKeys(pin);
@@ -401,19 +399,16 @@ public class PageBean {
 			throws InterruptedException {
 		
 		new Select(cropDetailsDistrictDropDown).selectByVisibleText(district);
-		Thread.sleep(2000);
 		wait.until(driver1 -> {
 			Select dropDown = new Select(cropDetailsBlockDropDown);
 			return dropDown.getOptions().size() > 1;
 		});
 		new Select(cropDetailsBlockDropDown).selectByVisibleText(block);
-		Thread.sleep(2500);
 		wait.until(driver1 -> {
 			Select dropDown = new Select(cropDetailsCropDropDown);
 			return dropDown.getOptions().size() > 1;
 		});
 		new Select(cropDetailsCropDropDown).selectByVisibleText(crop);
-		Thread.sleep(2500);
 		if (cropDetailsGramPanchayatInitial.isEnabled()) {
 			wait.until(driver1 -> {
 				Select dropDown = new Select(cropDetailsGramPanchayatInitial);
@@ -435,10 +430,8 @@ public class PageBean {
 			return dropDown.getOptions().size() > 1;
 		});
 		new Select(cropDetailsMouzaDropDown).selectByVisibleText(mouza);
-		Thread.sleep(2500);
 		clearAndType(cropDetailskhaitanNumber, khatianNumber);
 		clearAndType(cropDetailsPlotNumber, plotNumber);
-		Thread.sleep(2000);
 		cropDetailskhaitanNumber.clear();
 		cropDetailsPlotNumber.clear();
 		clearAndType(cropDetailskhaitanNumber, khatianNumber);
@@ -515,13 +508,12 @@ public class PageBean {
 	    // 4. IFSC Code
 	    if (ifsCode.isEnabled() && ifsCode.getAttribute("readonly") == null) {
 	        ifsCode.clear();
-			Thread.sleep(2000);
 	        ifsCode.sendKeys(ifscCode);
 
 	        // Click bank name only if interactive
 	        if (bankName.isEnabled()) {
 	            bankName.click();
-	            Thread.sleep(2500);
+	            Thread.sleep(100);
 	        }
 	    }
 
